@@ -31,67 +31,74 @@ header {
 
 	/*------------------MENU-------------------*/
 #nav {
-    width: 100%;             /* Πιάνει όλο το πλάτος */
+    width: 100%;
     margin: 0;
     padding: 0;
     border-top: 1px solid white;
     border-bottom: 1px solid black;
     background: linear-gradient(to bottom, #b8c6df 46%, #6d88b7 78%);
-    display: flex;           /* Χρήση Flexbox για αυτόματη κατανομή */
+    display: flex;
     list-style: none;
+    position: relative; /* Βασικό για να ελέγχουμε τα απόλυτα στοιχεία μέσα του */
+    z-index: 100;       /* Δίνουμε ύψος στη μπάρα για να είναι πάνω από την εικόνα */
 }
 
 #nav li {
-    flex: 1;                 /* Κάνει όλα τα κουμπιά να έχουν το ίδιο πλάτος */
-    position: relative;
+    flex: 1;
+    position: relative; /* Επιτρέπει στο ul (υπομενού) να τοποθετηθεί ακριβώς από κάτω */
 }
 
 #nav li a {
-    display: block;          /* Όλο το κουμπί είναι κλικάσιμο */
-    padding: 20px 0;         /* Ύψος κουμπιού */
+    display: block;
+    padding: 20px 10px;
     text-decoration: none;
     color: white;
     text-align: center;
-    font-size: 18px;         /* Μπορείς να το προσαρμόσεις */
+    font-size: 18px;
     font-family: "calibri", serif;
     background: linear-gradient(to bottom, #b8c6df 46%, #6d88b7 78%);
     border-right: 1px solid #207cca;
     cursor: pointer;
 }
 
-/* Αφαιρούμε το δεξί border από το τελευταίο κουμπί για ομορφιά */
 #nav li:last-child a {
     border-right: none;
 }
 
 #nav li a:hover {
-    filter: brightness(1.1); /* Φωτίζει λίγο το κουμπί στο hover */
+    filter: brightness(1.1);
 }
 
-/* --- Dropdown Μενού (Αν έχεις υπομενού) --- */
+/* --- ΔΙΟΡΘΩΣΗ ΓΙΑ ΤΙΣ ΥΠΟΚΑΤΗΓΟΡΙΕΣ --- */
 #nav li ul {
-    display: none;
-    position: absolute;
+    display: none;      /* Κρυφό αρχικά */
+    position: absolute; /* Τοποθέτηση σε σχέση με το li */
+    top: 100%;          /* Εμφάνιση ακριβώς κάτω από το κουμπί */
     left: 0;
-    top: 100%;
-    width: 100%;
+    width: 100%;        /* Το υπομενού θα έχει το ίδιο πλάτος με το κουμπί */
     padding: 0;
     margin: 0;
     list-style: none;
-    z-index: 1000;
+    background-color: #6d88b7; /* Σταθερό χρώμα για να ξεχωρίζει */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 999;       /* Πολύ ψηλά για να μην το κρύβει τίποτα */
 }
 
 #nav li:hover > ul {
-    display: block;
+    display: block;     /* Εμφάνιση στο hover */
+}
+
+#nav li ul li {
+    width: 100%;        /* Οι υποκατηγορίες να πιάνουν όλο το πλάτος του dropdown */
 }
 
 #nav li ul li a {
+    padding: 15px 10px;
     font-size: 15px;
-    padding: 10px 0;
-    border-top: 1px solid #ffffff33;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: none; /* Αφαίρεση του δεξιού border στις υποκατηγορίες */
+    text-align: center;
 }
-
-
 /*------------------MAIN-------------------*/
 main {
     width:90%;
